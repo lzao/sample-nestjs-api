@@ -71,9 +71,9 @@
       "**/*.(t|j)s"
     ],
     "coveragePathIgnorePatterns": [
+      ".controller.spec.ts$",
       ".module.ts$",
       ".spec.ts$",
-      "main.ts",
       "src/migrations"
     ],
     "coverageDirectory": "../coverage",
