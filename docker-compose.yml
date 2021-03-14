@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  node:
+    build: 
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    container_name: node
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+    networks:
+      - node-network
+    tty: true
+
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/data/Dockerfile
+    container_name: db
+    secrets:
+        - mysql-root
+        - mysql-user
+    environment:
+        MYSQL_DATABASE: node
+        MYSQL_USER: root
+        MYSQL_PASSWORD: /run/secrets/mysql-user
+        MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql-root
+    ports:
+        - "33061:3306"
+    expose:
+        - "3306"
+    volumes:
+        - "./docker/data/mysql:/var/lib/mysql"
+        - "./docker/data/pw:/run/secrets"
+        - "./docker/mysql/logs:/var/log/mysql"
+    command: --sql_mode=""
+    restart: always
+    networks:
+        - node-network
+
+networks:
+    node-network:
+        driver: bridge
+
+secrets:
+  mysql-root:
+    file: ./docker/data/secrets/mysql-root
+  mysql-user:
+    file: ./docker/data/secrets/mysql-user
