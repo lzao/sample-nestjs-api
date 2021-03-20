@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { BeforeInsert, Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import * as bcrypt from 'bcrypt';
 
 @Entity()
 export class User {
@@ -20,13 +21,13 @@ export class User {
     @Column({default: 1})
     is_use: number;
 
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-    reg_date : string;
+    @CreateDateColumn()
+    reg_date: string;
 
-    @Column({ type: 'timestamp', default: null })
+    @UpdateDateColumn()
     upd_date : string;
 
-    @Column({ type: 'timestamp', default: null })
+    @DeleteDateColumn()
     del_date : string;
 
     public static of(params: Partial<User>): User {

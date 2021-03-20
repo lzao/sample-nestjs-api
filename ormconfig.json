@@ -5,7 +5,7 @@
     "username": "root",
     "password": "node1234",
     "database": "node",
-    "entities": ["src/**/*.entity{.ts,.js}"],
+    "entities": ["dist/**/*.entity{.ts,.js}"],
     "migrations": ["src/migrations/*{.ts,.js}"],
     "cli": {
         "migrationsDir": "src/migrations"
