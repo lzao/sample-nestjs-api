@@ -18,8 +18,8 @@ export class User {
     @Column()
     nickname: string;
 
-    @Column({default: 1})
-    is_use: number;
+    @Column({default: 'Y'})
+    is_use: string;
 
     @CreateDateColumn()
     reg_date: string;

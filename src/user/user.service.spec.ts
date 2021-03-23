@@ -27,7 +27,7 @@ describe('UserService', () => {
         user_pw: 'bbb',
         token: "ccc",
         nickname: "ddd",
-        is_use: 1,
+        is_use: 'Y',
         reg_date: '2021-03-18 00:00:00',
         upd_date: '2021-03-18 00:00:00',
         del_date: null
@@ -37,7 +37,7 @@ describe('UserService', () => {
         user_pw: 'fff',
         token: "ggg",
         nickname: "hhh",
-        is_use: 1,
+        is_use: 'Y',
         reg_date: "2021-03-18 00:00:00",
         upd_date: "2021-03-18 00:00:00",
         del_date: null
@@ -90,7 +90,7 @@ describe('UserService', () => {
         id: 1,
         ...createUserDto,
         token: "ccc",
-        is_use: 1,
+        is_use: 'Y',
         reg_date: '2021-03-18 00:00:00',
         upd_date: '2021-03-18 00:00:00',
         del_date: null
