@@ -54,6 +54,29 @@ describe('UserService', () => {
     });
   });
 
+  describe("하나의 회원 조회", () => {
+    it("하나의 회원 아이디로 회원 정보를 조회합니다.", async() => {
+      const testUser: User = {
+        id: 1,
+        user_id: '1',
+        user_pw: '2',
+        nickname: '3',
+        token: "ccc",
+        is_use: 'Y',
+        reg_date: '2021-03-18 00:00:00',
+        upd_date: '2021-03-18 00:00:00',
+        del_date: null
+      };
+
+      const findUserRepositorySpy = jest.spyOn(userRepository, 'findOne').mockResolvedValue(testUser);
+
+      const result = await service.findUser(testUser.user_id);
+
+      expect(findUserRepositorySpy).toHaveBeenCalledWith({where: {user_id: testUser.user_id }})
+      expect(result).toBe(testUser);
+    });
+  });
+
   describe("회원 생성", () => {
     it("회원을 생성할 때 이미 있는 회원일 경우 BadRequest 를 호출합니다", async() => {
       const createUserDto: CreateUserDto = {

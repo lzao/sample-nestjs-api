@@ -11,6 +11,10 @@ export class UserService {
         return await this.userRepository.find();
     }
 
+    async findUser(id: string): Promise<User> {
+        return await this.userRepository.findOne({where: {user_id: id}});
+    }
+
     async create(createUserDto: CreateUserDto): Promise<User> {
         const userId = createUserDto.user_id;
         const checkExistUser: User = await this.userRepository.findOne({where: {user_id: userId}});

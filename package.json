@@ -76,6 +76,7 @@
       "**/*.(t|j)s"
     ],
     "coveragePathIgnorePatterns": [
+      ".subscriber.ts$",
       ".controller.spec.ts$",
       ".module.ts$",
       ".spec.ts$",
