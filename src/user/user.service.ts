@@ -43,6 +43,12 @@ export class UserService {
         return this.userRepository.save(user);
     }
 
+    /**
+     * 유저 정보 수정
+     * @param id : user_id
+     * @param updateUserDto 
+     * @returns : Promise<User>
+     */
     async updateUser(id:string, updateUserDto: UpdateUserDto): Promise<User> {
         const existUser = await this.findUser(id);
         if (existUser === undefined) {
@@ -54,5 +60,9 @@ export class UserService {
         existUser.is_use = updateUserDto.is_use ?? existUser.is_use;
         
         return await this.userRepository.save(existUser);
+    }
+
+    async deleteUser(id: number): Promise<void> {
+        await this.userRepository.delete(id);
     }
 }

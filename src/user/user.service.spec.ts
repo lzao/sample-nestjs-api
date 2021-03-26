@@ -196,4 +196,16 @@ describe('UserService', () => {
 
     });
   });
+
+  describe("회원 삭제", () => {
+    it('하나의 회원을 삭제합니다.', async() => {
+      const deleteUserId = 1;
+
+      const deleteUserRepositorySpy = jest.spyOn(userRepository, 'delete').mockReturnValue(null);
+      const result = await service.deleteUser(deleteUserId);
+
+      expect(deleteUserRepositorySpy).toHaveBeenCalledWith(deleteUserId);
+      expect(result).toBe(undefined);
+    });
+  });
 });
