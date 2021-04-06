@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 import * as ormconfig from '../ormconfig';
 
 export function DatabaseOrmModule(): DynamicModule {
@@ -13,7 +14,7 @@ export function DatabaseOrmModule(): DynamicModule {
 }
 
 @Module({
-  imports: [TypeOrmModule.forRoot(ormconfig), UserModule],
+  imports: [TypeOrmModule.forRoot(ormconfig), UserModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
