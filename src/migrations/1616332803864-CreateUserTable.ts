@@ -5,7 +5,6 @@ export class CreateUserTable1616332803864 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query("CREATE TABLE `user` ( \
             `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT, \
-            `token` varchar(255) NOT NULL default '' COMMENT '토큰', \
             `user_id` varchar(30) NOT NULL default '' COMMENT '회원 아이디', \
             `user_pw` varchar(150) NOT NULL default '' COMMENT '회원 비밀번호', \
             `nickname` varchar(50) NOT NULL default '' COMMENT '회원 이름', \

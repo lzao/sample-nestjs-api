@@ -13,9 +13,6 @@ export class User {
     user_pw: string;
 
     @Column()
-    token: string;
-
-    @Column()
     nickname: string;
 
     @Column({default: 'Y'})

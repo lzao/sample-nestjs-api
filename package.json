@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^7.6.13",
+    "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.6.13",
     "@nestjs/mapped-types": "^0.4.0",
     "@nestjs/passport": "^7.1.5",
@@ -81,14 +82,16 @@
       "**/*.(t|j)s"
     ],
     "coveragePathIgnorePatterns": [
+      "main.ts",
+      "controller.ts$",
       ".subscriber.ts$",
       ".controller.spec.ts$",
       ".module.ts$",
       ".spec.ts$",
       "src/migrations",
-      "main.ts",
-      "src/dto",
-      "controller.ts$"
+      "src/database",
+      "src/config",
+      "src/dto"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"

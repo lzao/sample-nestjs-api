@@ -40,3 +40,6 @@ lerna-debug.log*
 /docker/data/mysql
 /docker/data/pw
 /docker/mysql
+
+# .env
+.env

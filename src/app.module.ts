@@ -1,20 +1,26 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import * as ormconfig from '../ormconfig';
-
-export function DatabaseOrmModule(): DynamicModule {
-  // we could load the configuration from dotEnv here,
-  // but typeORM cli would not be able to find the configuration file.
-
-  return TypeOrmModule.forRoot(ormconfig);
-}
+import { ConfigModule } from '@nestjs/config';
+import { config } from './config/config';
+import { DatabaseConfig } from './database/database.config';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(ormconfig), UserModule, AuthModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [config]
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useClass: DatabaseConfig
+    }),
+    UserModule,
+    AuthModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
