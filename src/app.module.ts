@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { config } from './config/config';
 import { DatabaseConfig } from './database/database.config';
+import { UserService } from './user/user.service';
+import { UserRepository } from './user/user.repository';
 
 @Module({
   imports: [
